@@ -1,0 +1,24 @@
+server:
+  port: 8502
+
+spring:
+  application:
+    name: ticket-service
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/microservisapp
+    username: root
+    password: microservis-app
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: update
+  data:
+    elasticsearch:
+      repositories:
+        enabled: false
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
