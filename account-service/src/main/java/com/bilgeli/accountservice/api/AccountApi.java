@@ -1,7 +1,11 @@
 package com.bilgeli.accountservice.api;
 
+import com.bilgeli.accountservice.dto.AccountDto;
 import com.bilgeli.accountservice.entity.Account;
 import com.bilgeli.accountservice.service.AccountService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,26 +20,23 @@ import java.util.List;
 
 @RestController //dıs dunyaya acılsın
 @RequestMapping("account") // bu adreste yayınlansın
+@RequiredArgsConstructor
 public class AccountApi {
     private final AccountService accountService ;
 
-    public AccountApi(AccountService accountService) {
-        this.accountService = accountService;
-    }
-
     // ResponseEntity : özel bi geri dönüş nesnesi oluşturuyor. ( status, responseTime, ..)
     @GetMapping("/{id}") // sunucudaki nesneyi istemek icin
-    public ResponseEntity<Account> get(@PathVariable("id") String id){
+    public ResponseEntity<AccountDto> get(@PathVariable("id") String id){
         return ResponseEntity.ok(accountService.get(id));
     }
 
     @PostMapping // sunucuda kayıt olusturmak icin
-    public ResponseEntity<Account> save(@RequestBody Account account){
+    public ResponseEntity<AccountDto> save(@RequestBody AccountDto account){
         return ResponseEntity.ok(accountService.save(account));
     }
 
     @PutMapping
-    public ResponseEntity<Account> update(@PathVariable("id") String id, @RequestBody Account account){
+    public ResponseEntity<AccountDto> update(@PathVariable("id") String id, @RequestBody AccountDto account){
         return ResponseEntity.ok(accountService.update(id, account));
     }
 
@@ -45,10 +46,7 @@ public class AccountApi {
     }
 
     @GetMapping
-    public ResponseEntity<List<Account>> get(){
-        return ResponseEntity.ok(accountService.findAll());
+    public ResponseEntity<Slice<AccountDto>> get(Pageable pageable){
+        return ResponseEntity.ok(accountService.findAll(pageable));
     }
-    /*public ResponseEntity<Account> pagination(){
-
-    }*/
 }
