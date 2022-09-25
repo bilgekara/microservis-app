@@ -12,10 +12,11 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     database: mysql
-    database-platform: org.hibernate.dialect.MySQL5Dialect
     generate-ddl: true
+    show-sql: true
     hibernate:
       ddl-auto: update
+      dialect: org.hibernate.dialect.MySQL5Dialect
 
 eureka:
   client:
