@@ -6,17 +6,16 @@ spring:
     name: ticket-service
 
   datasource:
-    url: jdbc:mysql://localhost:3306/microservisapp
+    url: jdbc:mysql://localhost:3306/microserviceapp
     username: root
     password: microservis-app
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     database: mysql
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    generate-ddl: true
     hibernate:
       ddl-auto: update
-  data:
-    elasticsearch:
-      repositories:
-        enabled: false
 
 eureka:
   client:
