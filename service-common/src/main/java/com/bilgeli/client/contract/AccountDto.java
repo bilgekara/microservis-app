@@ -1,4 +1,4 @@
-package com.bilgeli.accountservice.dto;
+package com.bilgeli.client.contract;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,4 +21,7 @@ public class AccountDto {
     private String email;
 
     private Date birthDate;
+    public String getNameSurname(){
+        return this.name + " " + this.surname;
+    }
 }

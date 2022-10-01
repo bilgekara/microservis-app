@@ -1,8 +1,8 @@
 package com.bilgeli.accountservice.service;
 
-import com.bilgeli.accountservice.dto.AccountDto;
 import com.bilgeli.accountservice.entity.Account;
 import com.bilgeli.accountservice.repo.AccountRepository;
+import com.bilgeli.client.contract.AccountDto;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Pageable;
